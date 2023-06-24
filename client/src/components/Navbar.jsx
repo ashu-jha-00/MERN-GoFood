@@ -28,8 +28,8 @@ const Navbar = () => {
               <Link className="nav-link active" to="/">
                 Features
               </Link>
-              <Link className="nav-link active" to="/">
-                Pricing
+              <Link className="nav-link active" to="/createuser">
+                Signup
               </Link>
               <Link className="nav-link active" to="/login">
                 Login
