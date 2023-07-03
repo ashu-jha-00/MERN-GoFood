@@ -1,13 +1,16 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../index.css"
 
 const Navbar = () => {
 
   let navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("authToken")
+    localStorage.removeItem("authtoken")
     navigate("/login")
   }
+  console.log(localStorage.getItem('authtoken'));
+  console.log("after auth token");
 
   return (
     <div>
@@ -23,15 +26,15 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  {/* index.css - nav-link color white */}
               </li>
-              {(localStorage.getItem("authToken")) ?
+              {(localStorage.getItem("authtoken")) ?
                 <li className="nav-item">
                   <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/" >My Orders</Link>  {/* index.css - nav-link color white */}
                 </li> : ""}
             </ul>
-            {(!localStorage.getItem("authToken")) ?
+            {(!localStorage.getItem("authtoken")) ?
               <div className="d-flex">
                 <Link className="btn bg-white text-success mx-1 " to="/login">Login</Link>
-                <Link className="btn bg-white text-success mx-1" to="/signup">Signup</Link>
+                <Link className="btn bg-white text-success mx-1" to="/createuser">Signup</Link>
               </div> :
               <div>
                 <div className="btn bg-white text-success mx-2" >

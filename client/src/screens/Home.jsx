@@ -36,7 +36,7 @@ const Home = () => {
       <div> <div id="carouselExampleFade" className="carousel slide carousel-fade " data-bs-ride="carousel">
 
         <div className="carousel-inner " id='carousel'>
-          <div class=" carousel-caption  " style={{ zIndex: "9" }}>
+          <div className=" carousel-caption  " style={{ zIndex: "9" }}>
             <div className="d-flex justify-content-center">  {/* justify-content-center, copy this <form> from navbar for search box */}
               <input className="form-control me-2 w-75 bg-white text-dark" type="search" placeholder="Dig in....." aria-label="Search" value={search} onChange={(e) => { setSearch(e.target.value)}}  />
               {/* <button className="btn text-white bg-success" type="submit">Search</button> */}
@@ -71,7 +71,7 @@ const Home = () => {
               return (
                 // justify-content-center
                 <div className='row mb-3'>
-                  <div key={data.id} className='fs-3 m-3'>
+                  <div key={data._id} className='fs-3 m-3'>
                     {data.CategoryName}
                   </div>
                   <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
@@ -79,9 +79,9 @@ const Home = () => {
                     (items) => (items.CategoryName === data.CategoryName) && (items.name.toLowerCase().includes(search.toLowerCase())))
                     .map(filterItems => {
                       return (
-                        <div key={filterItems.id} className='col-12 col-md-6 col-lg-3'>
+                        <div key={filterItems.img} className='col-12 col-md-6 col-lg-3'>
                           {console.log(filterItems.url)}
-                          <Card foodName={filterItems.name} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} ></Card>
+                          <Card foodItem = {filterItems}  options={filterItems.options[0]} ></Card>
                         </div>
                       )
                     }) : <div> No Such Data </div>}
