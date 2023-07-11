@@ -19,8 +19,8 @@ const mongoDB = async () => {
     global.food_items = fetchedData;
     global.foodCategory = categoryData;
 
-    console.log("Fetched data:", fetchedData);
-    console.log("Category data:", categoryData);
+    // console.log("Fetched data:", fetchedData);
+    // console.log("Category data:", categoryData);
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
   }

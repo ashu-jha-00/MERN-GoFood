@@ -39,12 +39,12 @@ router.post(
         res.json({ success, authToken })
     })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             res.json({ error: "Please enter a unique value." })
         })
       // res.json({ success: true });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       res.json({ success: false });
     }
   }
@@ -87,7 +87,7 @@ router.post("/loginuser",[
     Navigate("/");
 
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.json({ success: false });
   }
 });
