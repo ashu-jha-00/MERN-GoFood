@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css"
+import Badge from "react-bootstrap/Badge";
+import Modal from "../Modal";
+import Cart from "../screens/Cart";
 
 const Navbar = () => {
+
+  const [cartView, setCartView] = useState(false);
 
   let navigate = useNavigate();
   const handleLogout = () => {
@@ -17,7 +22,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-success position-sticky"
         style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', position: "fixed", zIndex: "10", width: "100%" }}>
         <div className="container-fluid">
-          <Link className="navbar-brand fs-1 fst-italic" to="/">GoFood</Link>
+          <Link className="navbar-brand fs-1 fst-italic" to="/">Ashu Food</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -37,9 +42,11 @@ const Navbar = () => {
                 <Link className="btn bg-white text-success mx-1" to="/createuser">Signup</Link>
               </div> :
               <div>
-                <div className="btn bg-white text-success mx-2" >
-                  My Cart
+                <div className="btn bg-white text-success mx-2" onClick={() => { setCartView(true) }} >
+                  My Cart {" "}
+                  <Badge pill bg="danger">2</Badge>
                 </div>
+                {cartView ? <Modal onClose={() => setCartView(false)}><Cart/></Modal> : null}
                 <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
                   Logout
                 </div>
